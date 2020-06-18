@@ -173,6 +173,14 @@ app.get("/about", function(req, res){
   res.render("about");
 });
 
-app.listen(localPort, function() {
-  console.log("Server started on port " + localPort);
+// app.listen(localPort, function() {
+//   console.log("Server started on port " + localPort);
+// });
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = localPort;
+}
+app.listen(port, function() {
+  console.log("Server started on port " + port);
 });
