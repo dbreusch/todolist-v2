@@ -1,4 +1,5 @@
 //jshint esversion:6
+require('dotenv').config()
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -7,10 +8,11 @@ const _ = require("lodash");
 // const date = require(__dirname + "/date.js");
 
 // set up Database
-const pw = 'dft84CuJPE7YyrX';
-const dbName = 'todolistDB';
+const admin = process.env.DB_ADMIN;
+const pw = process.env.DB_PW;
+const dbName = process.env.DB_NAME;
 // const url = 'mongodb://localhost:27017/' + dbName;
-const url = 'mongodb+srv://admin-dave:'+pw+'@cluster0-ggsdv.mongodb.net/'+dbName+'?retryWrites=true&w=majority'
+const url = 'mongodb+srv://'+admin+':'+pw+'@cluster0-ggsdv.mongodb.net/'+dbName+'?retryWrites=true&w=majority'
 // mongoose.connect(url + "/" + dbName, {
 mongoose.connect(url, {
   useNewUrlParser: true,
